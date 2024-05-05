@@ -1,0 +1,68 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/master?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true
+    username: root
+    password: cyqcw.@4
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+  shardingsphere:
+    props:
+      sql:
+        show: true
+    datasource:
+        names: ds0,ds1
+        ds0:
+            type: com.zaxxer.hikari.HikariDataSource
+            driver-class-name: com.mysql.cj.jdbc.Driver
+            jdbc-url: jdbc:mysql://localhost:3306/master?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true
+            username: root
+            password:
+        ds1:
+            type: com.zaxxer.hikari.HikariDataSource
+            driver-class-name: com.mysql.cj.jdbc.Driver
+            jdbc-url: jdbc:mysql://localhost:3306/slave?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true
+            username: root
+            password:
+#    rules:
+#      sharding:
+#        sharding-algorithms:
+#          custom-db-inline:
+#            props:
+#              algorithm-expression: ds$->{Math.abs(user_id.hashCode()%2)}
+#            type: INLINE
+#          custom-table-inline:
+#            props:
+#              algorithm-expression: t_order$->{Math.abs(order_id.hashCode()%3)}
+#            type: INLINE
+#        tables:
+#          t_order:
+#            actual-data-nodes: ds$->{0..1}.t_order$->{0..2}
+#            database-strategy:
+#              standard:
+#                sharding-algorithm-name: custom-db-inline
+#                sharding-column: user_id
+#            table-strategy:
+#              standard:
+#                sharding-algorithm-name: custom-table-inline
+#                sharding-column: order_id
+
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/*Mapper.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+  global-config:
+    db-config:
+      id-type: assign_id # AUTO: 数据库ID自增, INPUT: 用户输入ID, ID_WORKER: 全局唯一ID, UUID: 全局唯一ID
+      update-strategy: not_null # all: 所有字段, not_null: 非NULL字段
+
+
+# 事务管理
+logging:
+  level:
+    org.springframework.jdbc.support.JdbcTransactionManager: debug
