@@ -2,7 +2,7 @@ package com.xmu.shardingspheredemo.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.xmu.shardingspheredemo.domain.User;
-import com.xmu.shardingspheredemo.request.UserDto;
+import com.xmu.shardingspheredemo.domain.dto.UserDto;
 
 /**
  * @author：HeGu

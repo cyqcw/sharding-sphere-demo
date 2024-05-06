@@ -1,5 +1,6 @@
-package com.xmu.shardingspheredemo.request;
+package com.xmu.shardingspheredemo.domain.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
@@ -7,6 +8,7 @@ import lombok.Data;
  * @date：2024/5/5
  */
 @Data
+@AllArgsConstructor
 public class UserDto {
     private String name;
     private String sex;

@@ -1,0 +1,35 @@
+
+shardingsphere:
+  props:
+    sql:
+      show: true
+  datasource:
+    names: ds0,ds1
+    ds0:
+      type: com.zaxxer.hikari.HikariDataSource
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/master?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true&rewriteBatchedStatements=true
+      username: root
+      password: cyqcw.@4
+    ds1:
+      type: com.zaxxer.hikari.HikariDataSource
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/slave?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true&rewriteBatchedStatements=true
+      username: root
+      password: cyqcw.@4
+    rules:
+      readwrite-splitting:
+        data-sources:
+          read-write-datasource:
+            static-strategy:
+              # 写库数据源名称
+              write-data-source-name: ds0
+              # 读库数据源列表，多个从数据源用逗号分隔
+              read-data-source-names: ds1
+            # 负载均衡算法名称
+            load-balancer-name: round_robin
+        # 负载均衡算法配置
+        load-balancers:
+          round_robin:
+            # 负载均衡算法类型
+            type: ROUND_ROBIN

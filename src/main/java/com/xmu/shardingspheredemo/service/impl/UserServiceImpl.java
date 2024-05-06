@@ -1,11 +1,11 @@
 package com.xmu.shardingspheredemo.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xmu.shardingspheredemo.domain.User;
 import com.xmu.shardingspheredemo.mapper.UserMapper;
-import com.xmu.shardingspheredemo.request.UserDto;
+import com.xmu.shardingspheredemo.domain.dto.UserDto;
 import com.xmu.shardingspheredemo.service.UserService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -18,8 +18,7 @@ import java.time.LocalDateTime;
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
     @Override
     public void register(UserDto userDto) {
-        User user = new User();
-        BeanUtils.copyProperties(userDto, user);
+        User user = BeanUtil.copyProperties(userDto, User.class).setStatus(1);
         user.setCreateTime(LocalDateTime.now()).setUpdateTime(LocalDateTime.now());
         this.baseMapper.insert(user);
     }
