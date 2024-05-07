@@ -7,8 +7,6 @@ spring:
     allow-bean-definition-overriding: true
   profiles:
     active: dev
-  #  autoconfigure:
-#    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
   shardingsphere:
     mode:
       type: Memory
@@ -21,23 +19,23 @@ spring:
       ds0:
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/master?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true&rewriteBatchedStatements=true
-        username: root
-        password: cyqcw.@4
+        url: jdbc:mysql://121.41.95.194:3306/read_write_db?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true&rewriteBatchedStatements=true
+        username: admin
+        password: pwd@admin
       ds1:
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/slave?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true&rewriteBatchedStatements=true
-        username: root
-        password: cyqcw.@4
+        url: jdbc:mysql://121.41.95.194:13306/read_write_db?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true&rewriteBatchedStatements=true
+        username: admin
+        password: pwd@admin
       rules:
         readwrite-splitting:
           data-sources:
             ds_ms:
               type: Static
               props:
-                write-data-source-name: ds1
-                read-data-source-names: ds0
+                write-data-source-name: ds0
+                read-data-source-names: ds1
             load-balancer-name: round_robin
 #            read-write-datasource:
 #              static-strategy:
@@ -70,7 +68,7 @@ mybatis-plus:
 #    cache-enabled: false
   global-config:
     db-config:
-      id-type: assign_id # AUTO: 数据库ID自增, INPUT: 用户输入ID, ID_WORKER: 全局唯一ID, UUID: 全局唯一ID
+      id-type: AUTO # AUTO: 数据库ID自增, INPUT: 用户输入ID, ID_WORKER: 全局唯一ID, UUID: 全局唯一ID
       update-strategy: not_null # all: 所有字段, not_null: 非NULL字段
 
 # 事务管理
