@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Accessors(chain = true)
-@TableName("tab_user")
+@TableName("sys_user")
 public class User {
     @TableId(type = IdType.AUTO)
     private Long id;
