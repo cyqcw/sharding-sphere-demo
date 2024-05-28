@@ -6,8 +6,8 @@ spring:
   main:
     # 一个实体类对应两张表覆盖，不能动
     allow-bean-definition-overriding: true
-    profiles:
-      active: dev
+#  profiles:
+#    active: dev
   shardingsphere:
     mode.type: Memory
     props:
@@ -32,22 +32,17 @@ spring:
     sharding:
       tables:
         sys_user:
-          actualDataNodes: db-user.sys_user_$->{0..1}
+          actualDataNodes: db-user.sys_user
           databaseStrategy:
             none:
           tableStrategy:
-            # inline表达式
-            inline:
-              sharding-column: id
-              algorithm-expression: sys_user_$->{id % 2}
+            none:
         sys_order:
-          actualDataNodes: db-order.sys_order_$->{0..1}
+          actualDataNodes: db-order.sys_order
           databaseStrategy:
             none:
           tableStrategy:
-            inline:
-              sharding-column: user_id
-              algorithm-expression: sys_order_$->{user_id % 2}
+            none:
 
   servlet:
     multipart:

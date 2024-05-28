@@ -20,7 +20,8 @@ import java.time.LocalDateTime;
 @Accessors(chain = true)
 @TableName("sys_user")
 public class User {
-    @TableId(type = IdType.AUTO)
+//    @TableId(type = IdType.AUTO)
+    @TableId(type = IdType.ID_WORKER)
     private Long id;
     private String name;
     private String sex;

@@ -12,7 +12,8 @@ import lombok.Data;
 @TableName("sys_order")
 @Data
 public class Order {
-    @TableId(type = IdType.AUTO)
+//    @TableId(type = IdType.AUTO)
+    @TableId(type = IdType.ID_WORKER)
     private Long id;
     private Long userId;
     private String orderNo;
