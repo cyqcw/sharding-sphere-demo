@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
  * @author：HeGu
  * @date：2024/5/28
  */
+@RestController
 @RequestMapping("/order")
 @RequiredArgsConstructor
 public class OrderController {
