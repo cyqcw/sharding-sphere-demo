@@ -40,6 +40,7 @@
             <version>${shardingsphere.version}</version>
         </dependency>
 
+        <!-- sharding-sphere -->
         <dependency>
             <groupId>org.apache.shardingsphere</groupId>
             <artifactId>sharding-jdbc-spring-namespace</artifactId>
@@ -74,6 +75,11 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>${hutools.version}</version>
+        </dependency>
+        <!-- rabbit -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
     </dependencies>
 

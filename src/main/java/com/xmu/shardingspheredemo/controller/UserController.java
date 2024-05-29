@@ -23,6 +23,7 @@ public class UserController {
         userService.register(userDto);
         return ResponseEntity.ok(HttpStatus.OK);
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<UserDto> getUser(@PathVariable Long id) {
         UserDto userDto = BeanUtil.copyProperties(userService.getById(id), UserDto.class);
