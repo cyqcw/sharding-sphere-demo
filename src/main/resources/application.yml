@@ -53,6 +53,7 @@ spring:
             inline:
               sharding-column: id
               algorithm-expression: sys_user_$->{id % 2}
+        # 应该是根据user_id分库, 根据order_no分表
         sys_order:
           key-generator:
             column: id
@@ -64,6 +65,18 @@ spring:
             inline:
               sharding-column: user_id
               algorithm-expression: sys_order_$->{user_id % 2}
+        # order_item表
+        sys_order_item:
+          key-generator:
+            column: id
+            type: SNOWFLAKE
+          actualDataNodes: db-order.sys_order_item_$->{0..1}
+          databaseStrategy:
+            none:
+          tableStrategy:
+            inline:
+              sharding-column: user_id
+              algorithm-expression: sys_order_item_$->{user_id % 2}
 
   servlet:
     multipart:

@@ -1,6 +1,7 @@
 package com.xmu.shardingspheredemo.controller;
 
 import com.xmu.shardingspheredemo.domain.Order;
+import com.xmu.shardingspheredemo.service.OrderItemService;
 import com.xmu.shardingspheredemo.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class OrderController {
     private final OrderService orderService;
+    private final OrderItemService orderItemService;
     @PostMapping("/create")
     public ResponseEntity createOrder(@RequestBody Order order) {
         orderService.save(order);
