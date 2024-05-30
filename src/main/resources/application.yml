@@ -91,8 +91,19 @@ spring:
             inline:
               sharding-column: order_no
               algorithm-expression: sys_order_item_$->{Math.abs(order_no.hashCode() % 2)}
+        # 广播表
+        sys_dict:
+          actualDataNodes: db-user.sys_dict, db-order-$->{0..1}.sys_dict
+          databaseStrategy:
+            none:
+          tableStrategy:
+            none:
+
       # 配置绑定表,这样就不会做多余的联表查询
       binding-tables[0]: sys_order, sys_order_item
+
+      # 配置广播表
+      broadcast-tables[0]: sys_dict
   servlet:
     multipart:
       max-file-size: 10MB
