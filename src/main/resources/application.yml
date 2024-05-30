@@ -43,6 +43,7 @@ spring:
         username: admin
         password: pwd@admin
 
+
     # 垂直分片, 逻辑表和真实节点的表名
     sharding:
       tables:
@@ -90,7 +91,8 @@ spring:
             inline:
               sharding-column: order_no
               algorithm-expression: sys_order_item_$->{Math.abs(order_no.hashCode() % 2)}
-
+      # 配置绑定表,这样就不会做多余的联表查询
+      binding-tables[0]: sys_order, sys_order_item
   servlet:
     multipart:
       max-file-size: 10MB
