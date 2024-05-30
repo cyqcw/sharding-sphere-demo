@@ -41,6 +41,10 @@ spring:
     sharding:
       tables:
         sys_user:
+          key-generator:
+            column: id
+            type: SNOWFLAKE
+
           actualDataNodes: db-user.sys_user_$->{0..1}
           databaseStrategy:
             none:
@@ -50,6 +54,9 @@ spring:
               sharding-column: id
               algorithm-expression: sys_user_$->{id % 2}
         sys_order:
+          key-generator:
+            column: id
+            type: SNOWFLAKE
           actualDataNodes: db-order.sys_order_$->{0..1}
           databaseStrategy:
             none:

@@ -21,7 +21,9 @@ import java.time.LocalDateTime;
 @TableName("sys_user")
 public class User {
 //    @TableId(type = IdType.AUTO)
-    @TableId(type = IdType.ID_WORKER)
+    // 基于mybatisplus的分布式id生成策略, 优先级高, 注释掉也有默认值, 所以这里要使用AUTO
+    //    @TableId(type = IdType.ID_WORKER)
+    @TableId(type = IdType.AUTO) // 配置了shardingsphere的分布式id生成策略, 所以这里要使用AUTO
     private Long id;
     private String name;
     private String sex;
