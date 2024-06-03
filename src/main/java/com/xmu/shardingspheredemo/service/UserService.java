@@ -1,8 +1,8 @@
 package com.xmu.shardingspheredemo.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.xmu.shardingspheredemo.domain.User;
-import com.xmu.shardingspheredemo.domain.dto.UserDto;
+import com.xmu.shardingspheredemo.models.User;
+import com.xmu.shardingspheredemo.models.dto.UserDto;
 
 /**
  * @author：HeGu

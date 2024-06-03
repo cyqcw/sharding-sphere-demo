@@ -1,4 +1,4 @@
-package com.xmu.shardingspheredemo.domain.dto;
+package com.xmu.shardingspheredemo.models.dto;
 
 import lombok.Data;
 

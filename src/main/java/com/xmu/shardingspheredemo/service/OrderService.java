@@ -1,7 +1,7 @@
 package com.xmu.shardingspheredemo.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.xmu.shardingspheredemo.domain.Order;
+import com.xmu.shardingspheredemo.models.Order;
 
 /**
  * @author：HeGu

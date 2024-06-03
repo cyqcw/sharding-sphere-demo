@@ -1,8 +1,8 @@
 package com.xmu.shardingspheredemo.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.xmu.shardingspheredemo.domain.Order;
-import com.xmu.shardingspheredemo.domain.dto.OrderVo;
+import com.xmu.shardingspheredemo.models.Order;
+import com.xmu.shardingspheredemo.models.dto.OrderVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 

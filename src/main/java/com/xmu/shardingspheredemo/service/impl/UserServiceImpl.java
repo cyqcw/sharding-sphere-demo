@@ -2,9 +2,9 @@ package com.xmu.shardingspheredemo.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.xmu.shardingspheredemo.domain.User;
+import com.xmu.shardingspheredemo.models.User;
 import com.xmu.shardingspheredemo.mapper.UserMapper;
-import com.xmu.shardingspheredemo.domain.dto.UserDto;
+import com.xmu.shardingspheredemo.models.dto.UserDto;
 import com.xmu.shardingspheredemo.service.UserService;
 import org.springframework.stereotype.Service;
 

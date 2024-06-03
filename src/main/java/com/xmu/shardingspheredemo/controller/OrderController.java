@@ -1,6 +1,6 @@
 package com.xmu.shardingspheredemo.controller;
 
-import com.xmu.shardingspheredemo.domain.Order;
+import com.xmu.shardingspheredemo.models.Order;
 import com.xmu.shardingspheredemo.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

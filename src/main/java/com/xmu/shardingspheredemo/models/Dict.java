@@ -1,4 +1,4 @@
-package com.xmu.shardingspheredemo.domain;
+package com.xmu.shardingspheredemo.models;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;

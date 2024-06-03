@@ -1,14 +1,12 @@
 package com.xmu.shardingspheredemo;
 
-import com.xmu.shardingspheredemo.domain.OrderItem;
-import com.xmu.shardingspheredemo.domain.dto.OrderVo;
+import com.xmu.shardingspheredemo.models.dto.OrderVo;
 import com.xmu.shardingspheredemo.mapper.DictMapper;
 import com.xmu.shardingspheredemo.mapper.OrderMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.core.annotation.Order;
-import com.xmu.shardingspheredemo.domain.Dict;
+import com.xmu.shardingspheredemo.models.Dict;
 import java.util.List;
 
 /**

@@ -1,7 +1,7 @@
 package com.xmu.shardingspheredemo.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.xmu.shardingspheredemo.domain.User;
+import com.xmu.shardingspheredemo.models.User;
 import org.apache.ibatis.annotations.Mapper;
 
 
