@@ -8,4 +8,5 @@ import com.xmu.shardingspheredemo.models.Order;
  * @date：2024/5/28
  */
 public interface OrderService extends IService<Order> {
+    Long saveOrder(Order order);
 }

@@ -23,6 +23,9 @@ spring:
       tables:
         # 用户表
         sys_user:
+          key-generator:
+            column: id
+            type: SNOWFLAKE
           actualDataNodes: single.sys_user
           databaseStrategy:
             none:
@@ -32,6 +35,9 @@ spring:
         # 订单表
         # 应该是根据user_id分库, 根据order_no分表
         sys_order:
+          key-generator:
+            column: id
+            type: SNOWFLAKE
           actualDataNodes: single.sys_order
           databaseStrategy:
             none:
@@ -40,6 +46,9 @@ spring:
         # 订单详情表
         # order_item表
         sys_order_item:
+          key-generator:
+            column: id
+            type: SNOWFLAKE
           actualDataNodes: single.sys_order_item
           databaseStrategy:
             none:
@@ -47,6 +56,9 @@ spring:
             none:
         # 广播表
         sys_dict:
+          key-generator:
+            column: id
+            type: SNOWFLAKE
           actualDataNodes: single.sys_dict
           databaseStrategy:
             none:

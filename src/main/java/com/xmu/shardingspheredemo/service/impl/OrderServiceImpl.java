@@ -12,4 +12,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements OrderService {
+    public Long saveOrder(Order order) {
+        baseMapper.insert(order);
+        return order.getId();
+    }
 }
