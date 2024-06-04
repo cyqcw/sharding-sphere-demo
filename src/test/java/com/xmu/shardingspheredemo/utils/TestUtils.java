@@ -1,4 +1,4 @@
-package com.xmu.shardingspheredemo;
+package com.xmu.shardingspheredemo.utils;
 
 import com.xmu.shardingspheredemo.models.dto.OrderVo;
 import com.xmu.shardingspheredemo.mapper.DictMapper;

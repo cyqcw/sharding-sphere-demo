@@ -1,8 +1,9 @@
 package com.xmu.shardingspheredemo;
+
 import com.xmu.shardingspheredemo.mapper.OrderMapper;
-import com.xmu.shardingspheredemo.mapper.UserMapper;
-import com.xmu.shardingspheredemo.models.dto.UserDto;
 import com.xmu.shardingspheredemo.service.UserService;
+import com.xmu.shardingspheredemo.models.dto.UserDto;
+import com.xmu.shardingspheredemo.models.Order;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,6 @@ import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.Date;
-import com.xmu.shardingspheredemo.models.Order;
 
 /**
  * @author：HeGu
@@ -33,6 +33,7 @@ public class DataGenerateUtils {
     private static final Set<String> GENERATED_USERNAMES = new HashSet<>();
 
     private static final AtomicLong ORDER_NUMBER_COUNTER = new AtomicLong(1);
+
     /**
      * Generate a unique username
      * @return a unique username
@@ -65,11 +66,17 @@ public class DataGenerateUtils {
      */
     @Test
     public void generateUsers() {
+        long startTime = System.currentTimeMillis();
+
         int count = 10000;
         for (int i = 0; i < count; i++) {
             UserDto user = generateUniqueUser();
             userService.register(user);
         }
+
+        long endTime = System.currentTimeMillis();
+        long duration = endTime - startTime;
+        System.out.println("generateUsers method execution time: " + duration + " ms");
     }
 
     /**
@@ -83,7 +90,7 @@ public class DataGenerateUtils {
     }
 
     /**
-     * 根据useId和amount生成订单
+     * 根据userId和amount生成订单
      * @param userId
      * @param amount
      * @return
@@ -101,7 +108,9 @@ public class DataGenerateUtils {
     }
 
     @Test
-    private void saveOrderToDatabase() {
+    public void saveOrderToDatabase() {
+        long startTime = System.currentTimeMillis();
+
         int count = 5000000;
         for (int i = 0; i < count; i++) {
             Long userId = (long) RANDOM.nextInt(10000) + 1; // User ID between 1 and 10000
@@ -109,11 +118,9 @@ public class DataGenerateUtils {
             Order order = createOrder(userId, amount);
             orderMapper.insert(order);
         }
+
+        long endTime = System.currentTimeMillis();
+        long duration = endTime - startTime;
+        System.out.println("saveOrderToDatabase method execution time: " + duration + " ms");
     }
-
-
-
-
-
-
 }

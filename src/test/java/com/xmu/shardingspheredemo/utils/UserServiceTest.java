@@ -1,6 +1,7 @@
-package com.xmu.shardingspheredemo.service;
+package com.xmu.shardingspheredemo.utils;
 
 import com.xmu.shardingspheredemo.models.dto.UserDto;
+import com.xmu.shardingspheredemo.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

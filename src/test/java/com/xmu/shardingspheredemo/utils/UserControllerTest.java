@@ -1,4 +1,4 @@
-package com.xmu.shardingspheredemo.controller;
+package com.xmu.shardingspheredemo.utils;
 
 import com.xmu.shardingspheredemo.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
