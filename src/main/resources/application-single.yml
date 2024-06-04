@@ -1,46 +1,60 @@
-server:
-  port: 8888
-
 spring:
-  datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://121.41.95.194:3306/single_test?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true&rewriteBatchedStatements=true
-    username: admin
-    password: pwd@admin
-  # rabbitmq配置
-  rabbitmq:
-    host: 127.0.0.1
-    port: 5672
-    username: guest
-    password: guest
-
   autoconfigure:
     exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
   main:
     # 一个实体类对应两张表覆盖，不能动
     allow-bean-definition-overriding: true
-    profiles:
-      active: dev
+  shardingsphere:
+    mode.type: Memory
+    props:
+      sql.show: true
+    datasource:
+      enabled: true
+      names: single
+      single:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://121.41.95.194:3306/single_test?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true&rewriteBatchedStatements=true
+        username: admin
+        password: pwd@admin
 
-  servlet:
-    multipart:
-      max-file-size: 10MB
-      max-request-size: 100MB
+    # 垂直分片, 逻辑表和真实节点的表名
+    sharding:
+      tables:
+        # 用户表
+        sys_user:
+          actualDataNodes: single.sys_user
+          databaseStrategy:
+            none:
+          tableStrategy:
+            none:
 
-mybatis-plus:
-  #  mapper-locations: classpath*:/mapper/*Mapper.xml
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-    map-underscore-to-camel-case: true
-  #    cache-enabled: false
-  global-config:
-    db-config:
-      # mybatis-plus主键生成策略，3.1.0版本支持的和3.5.3.1版本支持的不一样
-      id-type: AUTO # AUTO: 数据库ID自增, INPUT: 用户输入ID, ID_WORKER: 全局唯一ID, UUID: 全局唯一ID
-      update-strategy: not_null # all: 所有字段, not_null: 非NULL字段
+        # 订单表
+        # 应该是根据user_id分库, 根据order_no分表
+        sys_order:
+          actualDataNodes: single.sys_order
+          databaseStrategy:
+            none:
+          tableStrategy:
+            none:
+        # 订单详情表
+        # order_item表
+        sys_order_item:
+          actualDataNodes: single.sys_order_item
+          databaseStrategy:
+            none:
+          tableStrategy:
+            none:
+        # 广播表
+        sys_dict:
+          actualDataNodes: single.sys_dict
+          databaseStrategy:
+            none:
+          tableStrategy:
+            none:
 
-# 事务管理
-logging:
-  level:
-    org.springframework.jdbc.support.JdbcTransactionManager: debug
+#      # 配置绑定表,这样就不会做多余的联表查询
+#      binding-tables[0]: sys_order, sys_order_item
+
+      # 配置广播表
+      broadcast-tables[0]: sys_dict
