@@ -1,6 +1,6 @@
-package com.xmu.shardingspheredemo.controller;
+package com.xmu.shardingspheredemo.mq;
 
-import com.xmu.shardingspheredemo.controller.producer.SensorProducer;
+import com.xmu.shardingspheredemo.mq.producer.SensorProducer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

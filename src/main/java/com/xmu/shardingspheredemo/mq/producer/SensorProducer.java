@@ -1,4 +1,4 @@
-package com.xmu.shardingspheredemo.controller.producer;
+package com.xmu.shardingspheredemo.mq.producer;
 
 import com.xmu.shardingspheredemo.config.RabbitMQConfig;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

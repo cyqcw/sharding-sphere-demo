@@ -1,4 +1,4 @@
-package com.xmu.shardingspheredemo.controller.listener;
+package com.xmu.shardingspheredemo.mq.listener;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;

@@ -39,7 +39,7 @@ spring:
       db-order-1:
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://121.41.95.194:3306/slave_1?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true&rewriteBatchedStatements=true
+        url: jdbc:mysql://101.37.253.225:3306/slave_1?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true&rewriteBatchedStatements=true
         username: admin
         password: pwd@admin
 
