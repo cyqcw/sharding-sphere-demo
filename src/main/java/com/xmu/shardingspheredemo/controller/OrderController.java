@@ -17,19 +17,19 @@ import org.springframework.web.bind.annotation.*;
 public class OrderController {
     private final OrderService orderService;
     @PostMapping("/create")
-    public ResponseEntity<Long> createOrder(@RequestBody Order order) {
-        Long id=orderService.saveOrder(order);
-        return ResponseEntity.ok(id);
+    public ResponseEntity<Order> createOrder(@RequestBody Order order) {
+        Order saveOrder=orderService.saveOrder(order);
+        return ResponseEntity.ok(saveOrder);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Order> getOrder(@PathVariable Long id) {
-        return ResponseEntity.ok(orderService.getById(id));
+    @GetMapping("/{userId}/{orderNo}")
+    public ResponseEntity<Order> getOrder(@PathVariable Long userId, @PathVariable String orderNo) {
+        return ResponseEntity.ok(orderService.getByUserIdAndOrderNo(userId, orderNo));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deleteOrder(@PathVariable Long id) {
-        orderService.removeById(id);
+    @DeleteMapping("/{userId}/{orderNo}")
+    public ResponseEntity<HttpStatus> deleteOrder(@PathVariable Long userId, @PathVariable String orderNo) {
+        orderService.removeByUserIdAndOrderNo(userId, orderNo);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 }

@@ -3,7 +3,7 @@ server:
 
 spring:
   profiles:
-    active: single
+    active: multiple
 
   # rabbitmq配置
   rabbitmq:

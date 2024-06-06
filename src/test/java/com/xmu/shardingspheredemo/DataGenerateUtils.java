@@ -111,7 +111,7 @@ public class DataGenerateUtils {
     public void saveOrderToDatabase() {
         long startTime = System.currentTimeMillis();
 
-        int count = 5000000;
+        int count = 40000;
         for (int i = 0; i < count; i++) {
             Long userId = (long) RANDOM.nextInt(10000) + 1; // User ID between 1 and 10000
             Integer amount = RANDOM.nextInt(1000) + 1; // Amount between 1 and 1000

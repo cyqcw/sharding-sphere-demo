@@ -50,7 +50,7 @@ spring:
               sharding-column: id
               algorithm-expression: sys_user_$->{id % 2}
         # 订单表
-        # 应该是根据user_id分库, 根据order_no分表
+        # 根据user_id分库, 根据order_no分表
         sys_order:
           key-generator:
             column: id

@@ -29,7 +29,7 @@ public class TestUtils {
     @Test
     void testDict() {
         Dict dict = new Dict();
-        dict.setDictType("用户添加");
+        dict.setDictType("商品类别");
         dictMapper.insert(dict);
     }
 
